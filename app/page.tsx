@@ -19,16 +19,16 @@ import { checklist, steps, type Figure } from "./data";
 
 type OpenFigure = Figure & { stepTitle: string };
 
-const sourcePriority = [
-  ["01", "Product names", "Exact and alternative names found with Google Lens"],
-  ["02", "Swipe domains", "Root landing-page domains found in Facebook Ads Library"],
-  ["03", "Facebook Pages", "Numeric Facebook Page IDs found in Facebook Ads Library"],
-  ["04", "Keywords", "Broadest source — use only as a last resort"],
+const sourceTypes = [
+  ["Product names", "Exact and alternative names found with Google Lens"],
+  ["Swipe domains", "Root landing-page domains found in Facebook Ads Library"],
+  ["Facebook Pages", "Numeric Facebook Page IDs found in Facebook Ads Library"],
+  ["Keywords", "Generated search terms that can surface new and similar products"],
 ];
 
 const decisions = [
   ["Approve to Product", "Strong on-product ad that belongs to the winning product", "product"],
-  ["Approve", "Useful on-niche ad that should stay in the Library without a product attachment", "approve"],
+  ["Approve", "Useful on-niche or similar-product ad that should stay in the Library without a product attachment", "approve"],
   ["Reject", "Irrelevant or unsuitable individual ad", "reject"],
   ["Group", "Only the same actual product, even when labels differ", "group"],
 ];
@@ -154,7 +154,7 @@ export default function Home() {
               <p className="lede">A step by step operating guide for finding, reviewing, localizing, and organizing product ads.</p>
               <div className="meta-row">
                 <span><b>13</b> steps</span><i />
-                <span><b>38</b> screenshots</span><i />
+                <span><b>39</b> screenshots</span><i />
                 <span>Updated Sep 18, 2026</span>
               </div>
             </div>
@@ -181,15 +181,14 @@ export default function Home() {
         <section className="primer" aria-label="Core workflow guidance">
           <div className="section-heading">
             <span>Before you begin</span>
-            <h2>Start with the strongest signal</h2>
-            <p>Product names, domains, and Pages usually return exact or strongly relevant ads. Keywords are broader and should be scraped only when the stronger sources do not produce enough results.</p>
+            <h2>Scrape every source type</h2>
+            <p>Product names, swipe domains, Facebook Pages, and Keywords are all valid sources. Scrape every available source in any order, and always scrape Keywords to discover new and similar products.</p>
           </div>
           <div className="priority-list">
-            {sourcePriority.map(([number, title, description], index) => (
+            {sourceTypes.map(([title, description]) => (
               <div className="priority-row" key={title}>
-                <span className="priority-number">{number}</span>
                 <div><h3>{title}</h3><p>{description}</p></div>
-                <span className={`priority-tag p${index + 1}`}>{index === 0 ? "First" : index === 3 ? "Last resort" : index === 1 ? "Second" : "Third"}</span>
+                <span className="priority-tag">Always scrape</span>
               </div>
             ))}
           </div>
@@ -291,7 +290,7 @@ export default function Home() {
             <div className="lightbox-controls">
               <button onClick={() => navigateFigure(-1)} disabled={openFigure.number === 1}><ArrowLeft size={17} /> Previous figure</button>
               <span>{openFigure.number} / {allFigures.length}</span>
-              <button onClick={() => navigateFigure(1)} disabled={openFigure.number === allFigures.length}>Next figure <ArrowRight size={17} /></button>
+              <button onClick={() => navigateFigure(1)} disabled={allFigures.findIndex((item) => item.number === openFigure.number) === allFigures.length - 1}>Next figure <ArrowRight size={17} /></button>
             </div>
           </div>
         </div>

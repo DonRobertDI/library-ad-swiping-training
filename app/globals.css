@@ -72,13 +72,11 @@ h1 em { color: var(--accent); font-style: normal; }
 .section-heading h2 { margin: 15px 0 14px; font: 600 clamp(2.15rem, 4vw, 3.8rem)/1.08 Manrope, sans-serif; letter-spacing: -.045em; }
 .section-heading p { color: var(--muted); font-size: 1.05rem; margin: 0; }
 .priority-list { border-top: 1px solid var(--line); }
-.priority-row { display: grid; grid-template-columns: 70px 1fr auto; gap: 20px; align-items: center; min-height: 105px; border-bottom: 1px solid var(--line); }
-.priority-number { color: #5e675e; font: 600 1.1rem Manrope, sans-serif; }
+.priority-row { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; min-height: 105px; border-bottom: 1px solid var(--line); }
 .priority-row h3 { margin: 0 0 4px; font: 600 1.2rem Manrope, sans-serif; }
 .priority-row p { margin: 0; color: var(--muted); font-size: .9rem; }
 .priority-tag { border-radius: 999px; padding: 6px 11px; font: 700 .66rem Manrope, sans-serif; text-transform: uppercase; letter-spacing: .1em; border: 1px solid #485047; color: #b7c0b5; }
-.priority-tag.p1 { color: var(--green); border-color: #566943; background: rgba(158,185,107,.07); }
-.priority-tag.p4 { color: #d08b78; border-color: #654337; background: rgba(223,118,84,.06); }
+.priority-tag { color: var(--green); border-color: #566943; background: rgba(158,185,107,.07); }
 .decision-section { margin-top: 110px; }
 .section-heading.compact { margin-bottom: 32px; }
 .section-heading.compact h2 { font-size: clamp(2rem, 3.5vw, 3rem); }
@@ -190,8 +188,8 @@ footer { margin-left: clamp(32px, 7vw, 120px); margin-right: clamp(32px, 7vw, 12
   .workflow-card { padding: 24px 21px; }
   .meta-row { gap: 9px; }
   .primer { padding-top: 82px; padding-bottom: 70px; }
-  .priority-row { grid-template-columns: 48px 1fr; gap: 12px; padding: 18px 0; }
-  .priority-tag { grid-column: 2; justify-self: start; }
+  .priority-row { grid-template-columns: 1fr; gap: 12px; padding: 18px 0; }
+  .priority-tag { justify-self: start; }
   .decision-section { margin-top: 84px; }
   .decision-grid, .figure-grid, .checklist-items { grid-template-columns: 1fr; }
   .decision-card { min-height: 170px; }
